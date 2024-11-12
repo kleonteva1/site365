@@ -1,0 +1,103 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 140%;
+    color: #000000;
+    text-decoration: none;
+    list-style: none;
+}
+.centering {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+header {
+    height: 80px;
+    align-items: center;
+    justify-content: space-between;
+    width: 1280px;
+}
+.logotip_header{
+    width:200px;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    width:940px;
+}
+
+.linia {
+    border-bottom: 1px solid #000000;
+}
+.otstup40{
+    padding:20px 0px;
+}
+.otstup80 {
+    padding: 40px 0px;
+}
+.otstup800 {
+    padding: 400px 0px;
+}
+.img_misen1 {
+    width: 600px;
+}
+
+
+.object {
+    animation-name: ani-rotate;
+    animation-timing-function: linear;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    animation-fill-mode: none;
+    animation-duration: 12s;
+}
+@keyframes ani-rotate {
+    0% {
+        transform: rotate(0);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+h2 {
+    font-size: 52px;
+}
+
+h3 {
+    font-size: 32px;
+    margin-bottom:20px;
+}
+p{
+    width:560px;
+}
+
+.img{
+    width:1280px;
+}
+
+.osnova {
+    width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+footer {
+    justify-content: space-between;
+    width: 1280px;
+}
+.nav_footer {
+    flex-direction: column;
+}
+li {
+    padding: 10px;
+}

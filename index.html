@@ -1,0 +1,186 @@
+﻿<!DOCTYPE html>
+
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="authoring-tool" content="Adobe_Animate_CC">
+    <title>Дартс</title>
+
+
+
+    <style>
+        #animation_container {
+            position: absolute;
+            margin: auto;
+            left: 0;
+            right: 0;
+        }
+    </style>
+    <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
+    <script src="Video_Леонтьева_К.Е._4-МЗ-5.js?1704731251045"></script>
+    <script>
+        var canvas, stage, exportRoot, anim_container, dom_overlay_container, fnStartAnimation;
+        function init() {
+            canvas = document.getElementById("canvas");
+            anim_container = document.getElementById("animation_container");
+            dom_overlay_container = document.getElementById("dom_overlay_container");
+            var comp = AdobeAn.getComposition("36B7603304EB504E96FB1266976DC6B5");
+            var lib = comp.getLibrary();
+            var loader = new createjs.LoadQueue(false);
+            loader.installPlugin(createjs.Sound);
+            loader.addEventListener("fileload", function (evt) { handleFileLoad(evt, comp) });
+            loader.addEventListener("complete", function (evt) { handleComplete(evt, comp) });
+            var lib = comp.getLibrary();
+            loader.loadManifest(lib.properties.manifest);
+        }
+        function handleFileLoad(evt, comp) {
+            var images = comp.getImages();
+            if (evt && (evt.item.type == "image")) { images[evt.item.id] = evt.result; }
+        }
+        function handleComplete(evt, comp) {
+            //This function is always called, irrespective of the content. You can use the variable "stage" after it is created in token create_stage.
+            var lib = comp.getLibrary();
+            var ss = comp.getSpriteSheet();
+            var queue = evt.target;
+            var ssMetadata = lib.ssMetadata;
+            for (i = 0; i < ssMetadata.length; i++) {
+                ss[ssMetadata[i].name] = new createjs.SpriteSheet({ "images": [queue.getResult(ssMetadata[i].name)], "frames": ssMetadata[i].frames })
+            }
+            exportRoot = new lib.Video_Леонтьева_КЕ_4МЗ5();
+            stage = new lib.Stage(canvas);
+            //Registers the "tick" event listener.
+            fnStartAnimation = function () {
+                stage.addChild(exportRoot);
+                createjs.Ticker.framerate = lib.properties.fps;
+                createjs.Ticker.addEventListener("tick", stage);
+            }
+            //Code to support hidpi screens and responsive scaling.
+            AdobeAn.makeResponsive(false, 'both', false, 1, [canvas, anim_container, dom_overlay_container]);
+            AdobeAn.compositionLoaded(lib.properties.id);
+            fnStartAnimation();
+        }
+        function playSound(id, loop, offset) {
+            return createjs.Sound.play(id, { 'interrupt': createjs.Sound.INTERRUPT_EARLY, 'loop': loop, 'offset': offset });
+        }
+    </script>
+
+
+
+
+    <link rel="stylesheet" href="styles.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+</head>
+
+<body onload="init();" style="margin:0px;">
+
+    <header class="centering">
+        <div><a href="index.html"><img src="image/logo.png" alt="logotip" class="logotip_header"></a></div>
+
+        <nav>
+            <ul class="nav">
+                <li><a href="##">Правила игры</a></li>
+                <li><a href="##">Онлайн-магазин</a></li>
+                <li><a href="##">Расписание</a></li>
+                <li><a href="#contacts">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="osnova">
+
+        <div class="linia"> </div>
+        <div class="otstup40"> </div>
+
+
+
+        <img src="image/mishen.png" alt="чёрно-белая мишень" class="img_misen1 object centering">
+
+
+
+        <div class="otstup40"> </div>
+        <div class="linia"> </div>
+        <div class="otstup80"> </div>
+
+
+        <div class="centering"><h2 class="centering">Правила "501"</h2></div>
+        <div class="otstup40"> </div>
+
+
+        <h3>Цель игры</h3>
+        <p>В начале каждому игроку даётся по 501 очку. Спортсмены поочерёдно бросают по три дротика. После каждого броска поражённые секторы мишени суммируются и отнимаются от 501-ого. Ограничений по времени на каждый бросок нет. Чтобы стать победителем данной партии надо, как можно быстрее списать очки до 0 и последним дротиком попасть в удвоение или центр мишени. </p>
+        <p>Количество партий (в дартсе это называются leg и set) зависит от формата соревнований. За соблюдением правил и подсчётом очков следят судьи.</p>
+        <div class="otstup80"> </div>
+
+
+
+        <h3>Оборудование</h3>
+        <p>Дротик — это короткий метательный инвентарь, состоящий из острого наконечника (иглы), основной части (баррели), за которую игрок держит дротик, хвостовика и оперения, отвечающего за стабилизацию полёта. Длина дротика  должна быть менее 30,5 см, а масса не больше 50 г. </p>
+
+
+
+        <img src="image/drotik.png" alt="чёрно-белая мишень" class="img">
+        <div class="otstup80"> </div>
+
+
+
+        <p>Мишень – это круглая дощечка, которая разделенана на круги и сектора. Сектора пронумерованы от 1 до 20. Узкое внешнее кольцо является зоной удвоения значения сектора (double). Узкое внутреннее кольцо является зоной утроения значения сектора (treble). Центральная часть мишени(bull), окрашенная в красный цвет имеет номинал 50, а небольшой круг зеленого цвет, имеет номинал 25. </p>
+
+
+
+        <img src="image/misen_sektor.png" alt="чёрно-белая мишень" class="img">
+
+
+
+        <div class="otstup80"> </div>
+        <div>
+            <div id="animation_container" style="background-color:rgba(255, 255, 255, 1.00); width:1299px; height:756px">
+                <canvas id="canvas" width="1299" height="756" style="position: absolute; display: block; background-color:rgba(255, 255, 255, 1.00);"></canvas>
+                <div id="dom_overlay_container" style="pointer-events:none; overflow:hidden; width:1299px; height:756px; position: absolute; left: 0px; top: 0px; display: block;">
+                </div>
+            </div>
+        </div>
+        <div class="otstup40"> </div>
+
+
+
+    </div>
+
+
+    <div class="otstup800"> </div>
+    <div class="linia"> </div>
+    <div class="otstup40"> </div>
+
+    <footer class="centering">
+
+
+        <div><a href="index.html"><img src="image/logo.png" alt="logotip" class="logotip_header"></a></div>
+
+        <div>
+            <ul class="nav_footer">
+                <li><a href="##">Правила игры</a></li>
+                <li><a href="##">Онлайн-магазин</a></li>
+                <li><a href="##">Расписание</a></li>
+            </ul>
+        </div>
+
+
+        <div>
+            <ul class="nav_footer" id="contacts">
+                <li><a href="mailto:info@vmishen.ru" class="white_text">info@vmishen.ru</a></li>
+                <li><a href="tel:+79032095307" class="white_text">+7 (903) 209-53-07</a></li>
+            </ul>
+        </div>
+
+
+
+    </footer>
+
+
+    <div class="otstup40"> </div>
+    <p class="osnova">Леонтьева Кристина</p>
+    <p class="osnova">2023 г.</p>
+    <div class="otstup40"> </div>
+
+</body>
+</html>
